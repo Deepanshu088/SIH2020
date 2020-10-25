@@ -1,0 +1,45 @@
+<%- include('header') %>
+        <!-- <form method="GET" action="/buyer/crops">
+            <div style="display: flex; justify-content: space-around;">
+                <input name="nameFilter" placeholder="Crop Name" value="All">
+                <p><input name="priceStartFilter" placeholder="Price from" value="0">
+                    to <input name="priceEndFilter" placeholder="" value="1000"></p>
+                <input name="minQuantityFilter" placeholder="Minimum Order Qunatity" value="0">
+                <button type="submit" onclick="filter()">Apply</button>
+            </div>
+        </form> -->
+        <style>
+        </style>
+        <h3> Farmer Crops</h3>
+        <div class="bigBox">
+            <div class="row">
+                <% docs.forEach(function(shot) { %>
+                <div class="col-md-4">
+                    <div class="mainTab">
+                        <form method="POST" action="/buyer/crops">
+                            <p class="tabHeader"><%=shot.val().cropName %></p>
+                            <p>Total quantity : <%=shot.val().quantity %> kg</p>
+                            <p>Minimum Order Quantity : <%=shot.val().minQuantity %> kg</p>
+                            <p>Price : <%=shot.val().price %> Rs/kg</p>
+                            <input name="cropName" value="<%=shot.val().cropName %>" hidden>
+                            <input name="cropOwner" value="<%=shot.val().cropOwner %>" hidden>
+                            <input name="quantity" value="<%=shot.val().quantity %>" hidden>
+                            <input name="category" value="<%=shot.val().category %>" hidden>
+                            <input name="minQuantity" value="<%=shot.val().minQuantity %>" hidden>
+                            <input name="price" value="<%=shot.val().price %>" hidden>
+                            <input name="cropId" value="<%=shot.key%>" hidden>
+                            <input type="number" placeholder="Desired Quantity" name="offerQuantity" required style="width: 500px;">
+                            <input type="number" placeholder="Offer Price" name="offerPrice"style="width: 500px;">
+                            <p class="tabFooter">
+                                <button type="submit" name="buyerAction" value="bid">Bid</button>
+                                <button type="submit" name="buyerAction" value="addToCart">Add to Cart</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <%    }); %>
+            </div>
+        </div>
+    </body>
+    
+</html>

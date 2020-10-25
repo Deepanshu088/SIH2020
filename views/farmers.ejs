@@ -1,0 +1,66 @@
+<%- include('header') %>
+        
+        <div class="box">
+            <div class="tab">
+                <button class="tablinks" onclick="xyz('l')">Add New Crop</button>
+                <button class="tablinks" onclick="xyz('s')">Need a Transport Agent</button>
+            </div>
+            <div class="tabcontent">
+                <h1>Add new crop</h1>
+                <form method="POST" action="/farmers">
+                    <input placeholder="Crop Name" name="cropName">
+                    <input type="number" placeholder="min Quantity to deal" name="minQuantity">
+                    <input type="number" placeholder="total Quantity" name="quantity">
+                    <input placeholder="Category" name="category">
+                    <input type="number" placeholder="price" name="price">
+                    <button type="submit" name="farmerCrop" value="addNewCrop">Add Crop</button>
+                </form>
+            </div>
+            <div class="tabcontent">
+                <h1>Enter Transport Details</h1>
+                <form method="POST" action="/farmers">
+                    <input placeholder="Enter Pickup Location/Address" name="pickLoc">
+                    <input placeholder="Enter Drop Location/Address" name="dropLoc">
+                    <input placeholder="Enter Expected Price" name="expPrice">
+                    <button type="submit" name="farmerCrop" value="addTransportQuery">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="bigBox">
+            <h3>Your Crops</h3>
+            <div class="row">
+                <% docs.forEach(function(shot) { %>
+                <div class="col-md-4">
+                    <div class="mainTab">
+                        <form method="POST" action="/farmers">
+                            <p class="tabHeader"><%=shot.val().cropName %></p>
+                            <input placeholder="Crop Name" name="cropName" value="<%=shot.val().cropName %>" hidden>
+                            <p>Total quantity : <input placeholder="total Quantity" name="quantity" value="<%=shot.val().quantity %>"> kg</p>
+                            <p>Minimun order quantity : <input placeholder="min Quantity to deal" name="minQuantity"  value="<%=shot.val().minQuantity %>"> kg</p>
+                            <p>Price : <input placeholder="price" name="price" value="<%=shot.val().price %>"> Rs</p>
+                            <p class="tabFooter">
+                                <button type="submit" name="farmerCrop" value="updateCrop">Update Crop</button>
+                                <button type="submit" name="farmerCrop" value="deleteCrop">Delete Crop</button>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+                <%    }); %>
+            </div>
+        </div>
+    </body>
+    <script>
+        var tabcontent= document.getElementsByClassName("tabcontent");
+        
+            function xyz(log){
+                for(i=0;i<tabcontent.length;i++){
+                    tabcontent[i].style.display="none";
+                }
+                if(log=="l"){
+                    tabcontent[0].style.display="block";
+                } else if (log=="s"){
+                    tabcontent[1].style.display="block";
+                }
+            }
+    </script>
+</html>

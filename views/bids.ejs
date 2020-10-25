@@ -1,0 +1,33 @@
+<%- include('header') %>
+        <div class="box">
+            <div class="tab">
+                <button class="tablinks">Need a Transport Agent?</button>
+            </div>
+            <div class="tabcontent" style="display: block;">
+                <h4>Enter Transport Details</h4>
+                <form method="POST" action="/buyer">
+                    <input placeholder="Enter Pickup Location/Address" name="pickLoc">
+                    <input placeholder="Enter Drop Location/Address" name="dropLoc">
+                    <input placeholder="Enter Expected Price" name="expPrice">
+                    <button type="submit" name="buyerAction" value="addTransportQuery">Submit</button>
+                </form>
+            </div>
+        </div>
+        <div class="bigBox">
+            <h3>Your Bids</h3>
+            <div class="row">
+                <% docs.forEach(function(shot) { %>
+                <div class="col-md-4">
+                    <div class="mainTab">
+                            <p class="tabHeader"><%=shot.val().cropName %></p>
+                            <p>Price : <%=shot.val().actualPrice %> Rs/kg</p>
+                            
+                            <p>Your Bid price : <%=shot.val().offerPrice %> kg</p>
+                            <p>Your Bid quantity : <%=shot.val().offerQuantity %> kg</p>
+                    </div>
+                </div>
+                <%    }); %>
+            </div>
+        </div>
+    </body>
+</html>

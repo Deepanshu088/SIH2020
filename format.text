@@ -1,0 +1,5 @@
+// for the register
+Register#userType#Name#PhoneNo#Address#Password
+
+//to add, update, delete Crop
+Crop#Category#CropName#MinQuantity#Quantity#CropPrice#PhoneNo#Password

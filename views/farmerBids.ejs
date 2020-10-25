@@ -1,0 +1,27 @@
+<%- include('header') %>
+        <div>
+            <!-- <script>
+                doc.forEach( (element)=> {
+                   console.log(element.value().cropName)                 
+                });
+            </script> -->
+            
+            <div class="bigBox">
+                <h3>Your Bids</h3>
+                <div class="row">
+                    <% for(let i=0;i < doc.length; i++) { %>
+                    <div class="col-md-4">
+                        <div class="mainTab">
+                                <p class="tabHeader"><%=doc[i].cropName %></p>
+                                <p>Price : <%=doc[i].actualPrice %> Rs/kg</p>
+                                <p>Your Bid quantity : <%=doc[i].offerQuantity %> kg</p>
+                                <p>Your Bid price : <%=doc[i].offerPrice %> kg</p>
+                        </div>
+                    </div>
+                    <%    }; %>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<%- include('header') %>
+       
+            <div class="bigBox">
+                <h3>Your Cart</h3>
+                <div class="row">
+                    <% docs.forEach(function(shot) { %>
+                    <div class="col-md-4">
+                        <form method="POST" action="/cart">
+                            <div class="mainTab">
+                                <p class="tabHeader"><%=shot.val().cropName %></p>
+                                <p>Price : <%=shot.val().price %> Rs/kg</p>
+                                <p>Quantity : <input type="number" name="quantity" value="<%=shot.val().buyQuantity %>" min="<%=shot.val().minQuantity %>"max="<%=shot.val().avialableQuantity %>">kg</p>
+                                <input name="cartId" value="<%=shot.key%>"hidden>
+                                <p class="tabFooter"><button type="submit" value="update" name="cart">Update Buy Quantity</button></p>
+                            </div>
+                        </form>
+                    </div>
+                    <%    }); %>
+                </div>
+            </div>
+            
+    
+        <div style="padding: 3%;background-color: rgba(12, 190, 12, 0.658);max-width: 400px;height: 200px; margin-left: auto;">
+            <form method="POST" action="/cart">
+                <p>Total Amount : <input name="money" type="number" value="<%=totalMoney%>" readonly></p>
+                <button type="submit" value="buy" name="cart"> Buy</button>
+            </form>
+        </div>
+    </body>
+    <script>
+        var quantity = document.getElementsByName("quantity");
+        
+    </script>
+</html>

@@ -1,0 +1,16 @@
+<%- include('header') %>
+        <div class="bigBox">
+            <div class="row">
+                <% docs.forEach(function(shot) { %>
+                <div class="col-md-4">
+                    <div class="mainTab">
+                            <p class="tabHeader"><%=shot.val().cropName %></p>
+                            <p>Total quantity : <%=shot.val().quantity %> kg</p>
+                            <p>Price : <%=shot.val().price %> Rs/kg</p>
+                    </div>
+                </div>
+                <%    }); %>
+            </div>
+        </div>
+    </body>
+</html>
